@@ -7,72 +7,78 @@ interface ForexSectionProps {
 const ForexSection: React.FC<ForexSectionProps> = ({ onNavigate }) => {
   const forexServices = [
     { 
-      title: "Currency Exchange", 
-      description: "Buy and sell major currencies at live rates.", 
+      title: "Currency Exchange in Pala", 
+      description: "Buy and sell USD, EUR, GBP and other foreign currencies at competitive live rates.", 
       icon: "currency_exchange" 
     },
     { 
-      title: "Study Abroad", 
-      description: "Forex solutions for overseas education.", 
+      title: "Student Forex Services", 
+      description: "Overseas education payments, tuition fee transfers and study abroad forex support.", 
       icon: "school" 
     },
     { 
-      title: "Western Union", 
-      description: "Secure global money transfers.", 
+      title: "Western Union Pala", 
+      description: "Authorized Western Union agent for secure international money transfers.", 
       icon: "payments" 
     },
     { 
-      title: "Leisure Travel", 
-      description: "Best rates for international vacations.", 
+      title: "Travel Cards", 
+      description: "International travel cards for tourists and business travelers.", 
       icon: "flight_takeoff" 
     },
     { 
-      title: "Business Travel", 
-      description: "Reliable solutions for corporate travelers.", 
+      title: "Business Forex", 
+      description: "Reliable forex solutions for corporate and business travel requirements.", 
       icon: "business_center" 
     },
     { 
-      title: "International Transfer", 
-      description: "Fast remittance at the best exchange rates.", 
+      title: "International Remittance", 
+      description: "Fast and compliant overseas money transfers at transparent exchange rates.", 
       icon: "send_money" 
     }
   ];
 
   return (
     <section className="py-16 bg-[#002b4d] overflow-hidden relative">
-      {/* Decorative background elements */}
+
       <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
 
       <div className="layout-container mx-auto px-4 md:px-8 xl:px-40 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
-          {/* Left Side: Content */}
+          {/* LEFT SIDE */}
           <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
+
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">
               <span className="material-symbols-outlined text-xs">verified_user</span>
-              RBI Authorized
+              RBI Authorized Forex Dealer
             </div>
-            {/* Increased Heading Size */}
+
+            {/* SEO OPTIMIZED HEADING */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Our Forex Services
+              Forex & Currency Exchange in Pala
             </h2>
-            {/* Increased Subheading Size */}
+
+            {/* LOCAL SEO PARAGRAPH */}
             <p className="text-blue-100/80 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Trusted partner in Pala for secure, fast, and transparent international financial transactions.
+              Cherupushpam Agency is a trusted RBI authorized foreign currency exchange center 
+              near Civil Station, Pala. We provide Western Union services, travel cards, 
+              student forex assistance and international money transfer across Kottayam district.
             </p>
+
             <div className="pt-4">
               <button 
                 onClick={() => onNavigate?.('forex')}
                 className="w-full lg:w-auto px-8 py-4 bg-white/10 text-white text-sm font-bold border border-white/20 rounded-full hover:bg-white/20 transition-all flex items-center justify-center gap-2 mx-auto lg:mx-0"
               >
-                Check Live Rates
+                Check Today’s Live Exchange Rate
                 <span className="material-symbols-outlined text-sm">trending_up</span>
               </button>
             </div>
           </div>
 
-          {/* Right Side: Compact Service List - Backgrounds removed previously */}
+          {/* RIGHT SIDE SERVICES */}
           <div className="lg:w-1/2 w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-4">
               {forexServices.map((service, idx) => (
