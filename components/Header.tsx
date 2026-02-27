@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from './img/logofile.png';
 
-interface HeaderProps {
-  onNavigate: (page: string) => void;
-  currentPage: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'Forex Services', id: 'forex' },
-    { label: 'Electronics', id: 'electronics' },
-    { label: 'About Us', id: 'about' },
-    { label: 'Contact', id: 'contact' },
-    { label: 'Blog', id: 'blog' },
+    { label: 'Home', path: '/' },
+    { label: 'Forex Services', path: '/forex' },
+    { label: 'Electronics', path: '/electronics' },
+    { label: 'About Us', path: '/about' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'Blog', path: '/blog' },
   ];
 
   useEffect(() => {
@@ -26,64 +23,59 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
   }, []);
 
   return (
-    <header 
+    <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 border-b ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md border-gray-200 h-16 shadow-sm' 
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-gray-200 h-16 shadow-sm'
           : 'bg-white/60 backdrop-blur-sm border-transparent h-20'
       }`}
     >
-      <div className="mx-auto px-4 md:px-6 h-full w-full">
-        {/* Standard Flex layout ensures nothing 'covers' the screen */}
+      <div className="mx-auto px-4 md:px-6 h-full w-full max-w-7xl">
         <div className="flex items-center justify-between h-full">
-          
-          {/* LOGO: Set to exactly 30px on desktop as requested */}
-          <div 
-            className="flex items-center cursor-pointer py-2"
-            onClick={() => onNavigate('home')}
-          >
-            <img 
-              src={logo} 
-              alt="Logo" 
-              className="h-[25px] md:h-[28px] lg:h-[50px] w-auto object-contain" 
+
+          {/* LOGO */}
+          <Link to="/" className="flex-shrink-0 py-2">
+            <img
+              src={logo}
+              alt="Cherupushpam Agency Logo"
+              className="h-[25px] md:h-[28px] lg:h-[45px] w-auto object-contain"
             />
-          </div>
+          </Link>
 
-          {/* RIGHT SIDE: Navigation and Actions */}
-          <div className="flex items-center gap-8">
-            {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => onNavigate(item.id)}
-                  className={`text-sm font-semibold transition-all hover:text-primary whitespace-nowrap ${
-                    currentPage === item.id ? 'text-primary' : 'text-gray-800'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            {/* ACTION BUTTON & MOBILE TOGGLE */}
-            <div className="flex items-center gap-4">
-              <button 
-                onClick={() => onNavigate('contact')}
-                className="hidden sm:block px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary/90 transition-all shadow-md active:scale-95"
+          {/* DESKTOP NAV */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-sm font-bold px-4 py-2 rounded-lg transition-all ${
+                  location.pathname === item.path
+                    ? 'border-2 border-blue-600 text-blue-600 bg-blue-50/50'
+                    : 'text-gray-800 hover:text-blue-600'
+                }`}
               >
-                Visit Showroom
-              </button>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-              <button
-                className="lg:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <span className="material-symbols-outlined flex items-center justify-center text-[28px]">
-                  {isMenuOpen ? 'close' : 'menu'}
-                </span>
-              </button>
-            </div>
+          {/* BUTTON + MOBILE MENU */}
+          <div className="flex items-center gap-4">
+            <Link
+              to="/contact"
+              className="hidden sm:block px-8 py-3 bg-[#00c4ff] text-white text-sm font-bold rounded-full hover:bg-[#00b4eb] transition-all shadow-lg shadow-cyan-200/50 active:scale-95"
+            >
+              Visit Showroom
+            </Link>
+
+            <button
+              className="lg:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <span className="material-symbols-outlined text-[28px]">
+                {isMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -94,15 +86,18 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
       }`}>
         <div className="flex flex-col p-4 gap-2">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => { onNavigate(item.id); setIsMenuOpen(false); }}
-              className={`text-left p-3 rounded-lg text-sm font-medium transition-colors ${
-                currentPage === item.id ? 'bg-primary/10 text-primary' : 'hover:bg-gray-50'
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-left p-3 rounded-lg text-sm font-bold transition-colors ${
+                location.pathname === item.path
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'hover:bg-gray-50'
               }`}
             >
               {item.label}
-            </button>
+            </Link>
           ))}
         </div>
       </div>

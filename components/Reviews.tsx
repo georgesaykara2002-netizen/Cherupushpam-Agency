@@ -1,44 +1,68 @@
 import React from 'react';
-import review1 from './img/review1.png';
-import review2 from './img/review2.png';
-import review4 from './img/review4.png';
 
-
-// These URLs can be replaced with actual screenshots of Google reviews later
-const reviewImages = [
+const reviewData = [
   {
     id: 1,
-    src: review1, 
-    alt: "Google Review Screenshot 1"
+    name: "Shenjin Thomas",
+    initial: "S",
+    color: "bg-purple-700",
+    rating: 4.5, // The code will now use this number to color the stars
+    text: "Pricing was perfect, as well as had a great customer service. Did get a call after purchase to make sure, everything went smooth, which I experienced for the first time"
   },
   {
     id: 2,
-    src: review2,
-    alt: "Google Review Screenshot 2"
+    name: "renjith raghavan nair",
+    initial: "R",
+    color: "bg-blue-500",
+    rating: 5,
+    text: "Best customer service I ever had. Moreover, once you buy a product from Cherupishpam , I promise that you are in for a positive and promising relationship with Cherupishpam for the rest of your life , that is what my experience so far."
   },
   {
     id: 3,
-    src: review4,
-    alt: "Google Review Screenshot 3"
+    name: "Agnes Ann Linto",
+    initial: "A",
+    color: "bg-blue-800",
+    rating: 4.5,
+    text: "Excellent service,good selection,Excellent customer care. Must visit!!!"
   }
 ];
 
 const Reviews: React.FC = () => {
-  const googleReviewUrl = "https://www.google.com/search?rlz=1C5BAPC_enIN1171IN1172&sca_esv=3d809e212879af3d&sxsrf=AE3TifOlnJNM4KbOfcoWYb9It9Tv0BJqyA:1767334660640&q=CHERUPUSHPAM+AGENCY,+Cherupushpam+Building,+Old+Market+Road&spell=1&sa=X&ved=2ahUKEwjW-5XVmuyRAxXYhGMGHfEZERUQBSgAegQIFhAB&biw=1440&bih=812&dpr=1";
+  // Helper function to render stars based on rating
+  const renderStars = (rating: number) => {
+    return [...Array(5)].map((_, i) => {
+      const starValue = i + 1;
+      let iconName = 'star';
+      let textColor = 'text-[#fbbc04]'; // Default Gold
+
+      if (rating < starValue && rating > i) {
+        iconName = 'star_half';
+      } else if (rating < starValue) {
+        iconName = 'star';
+        textColor = 'text-gray-300'; // Unfilled Star
+      }
+
+      return (
+        <span key={i} className={`material-symbols-outlined ${textColor} !text-xl fill-current`}>
+          {iconName}
+        </span>
+      );
+    });
+  };
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
-      <div className="layout-container mx-auto px-4 md:px-8 xl:px-40">
+    <section className="py-16 bg-white overflow-hidden font-display">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         
-        {/* Google Reviews Header */}
+        {/* Header with Overall Rating */}
         <div className="flex flex-col items-center mb-12 text-center">
-          <h2 className="text-xl font-black text-black mb-1 uppercase tracking-tight">EXCELLENT</h2>
+          <h2 className="text-xl font-extrabold text-black mb-1 uppercase tracking-tighter">EXCELLENT</h2>
           <div className="flex gap-0.5 mb-1">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className="material-symbols-outlined text-[#fbbc04] fill-current text-3xl">star</span>
-            ))}
+            {renderStars(4.8)} {/* Dynamic overall rating */}
           </div>
-          <p className="text-sm font-bold text-black mb-4">Based on <span className="underline">100 reviews</span></p>
+          <p className="text-sm font-bold text-black mb-4 tracking-tight">
+            Based on <span className="underline decoration-2">100 reviews</span>
+          </p>
           <img 
             src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
             alt="Google" 
@@ -46,40 +70,36 @@ const Reviews: React.FC = () => {
           />
         </div>
 
-        {/* Review Images Grid - Background and border removed as requested */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {reviewImages.map((image) => (
-              <div 
-                key={image.id} 
-                className="group rounded-2xl overflow-hidden border border-gray-200" >
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-auto block cursor-default"
-                />
+        {/* Review Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {reviewData.map((review) => (
+            <div key={review.id} className="p-8 rounded-3xl border border-gray-100 bg-white flex flex-col shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
+              
+              <div className="flex items-center gap-4 mb-5">
+                <div className={`${review.color} h-12 w-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner`}>
+                  {review.initial}
+                </div>
+                <h3 className="font-bold text-slate-900 text-base border-b-2 border-slate-100 pb-1">
+                  {review.name}
+                </h3>
               </div>
-            ))}
 
-            {/* Next Button Overlay (Visual only as per UI ref) */}
-            <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 hidden lg:flex">
-               <button className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg text-gray-400 hover:text-black transition-all">
-                  <span className="material-symbols-outlined">chevron_right</span>
-               </button>
+              {/* Dynamic Stars for each review */}
+              <div className="flex gap-0.5 mb-4">
+                {renderStars(review.rating)}
+              </div>
+
+              <p className="text-slate-600 text-sm leading-relaxed italic">
+                "{review.text}"
+              </p>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Footer Button */}
         <div className="flex justify-center mt-12">
-          <a 
-            href={googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#513dbb] text-white px-10 py-3 rounded-md font-bold text-sm hover:brightness-110 transition-all shadow-lg active:scale-95 inline-block"
-          >
+          <button className="bg-[#513dbb] text-white px-12 py-4 rounded-2xl font-bold text-sm hover:scale-105 transition-all shadow-xl shadow-indigo-100 active:scale-95">
             Write a Review
-          </a>
+          </button>
         </div>
       </div>
     </section>

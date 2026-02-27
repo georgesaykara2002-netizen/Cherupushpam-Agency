@@ -1,10 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface ForexSectionProps {
-  onNavigate?: (page: string) => void;
-}
+const ForexSection: React.FC = () => {
+  const navigate = useNavigate();
 
-const ForexSection: React.FC<ForexSectionProps> = ({ onNavigate }) => {
   const forexServices = [
     { 
       title: "Currency Exchange in Pala", 
@@ -50,17 +49,18 @@ const ForexSection: React.FC<ForexSectionProps> = ({ onNavigate }) => {
           {/* LEFT SIDE */}
           <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">
-              <span className="material-symbols-outlined text-xs">verified_user</span>
+            {/* ✅ RBI Badge White */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest">
+              <span className="material-symbols-outlined text-xs text-white">
+                verified_user
+              </span>
               RBI Authorized Forex Dealer
             </div>
 
-            {/* SEO OPTIMIZED HEADING */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
               Forex & Currency Exchange in Pala
             </h2>
 
-            {/* LOCAL SEO PARAGRAPH */}
             <p className="text-blue-100/80 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
               Cherupushpam Agency is a trusted RBI authorized foreign currency exchange center 
               near Civil Station, Pala. We provide Western Union services, travel cards, 
@@ -69,11 +69,13 @@ const ForexSection: React.FC<ForexSectionProps> = ({ onNavigate }) => {
 
             <div className="pt-4">
               <button 
-                onClick={() => onNavigate?.('forex')}
+                onClick={() => navigate('/forex')}
                 className="w-full lg:w-auto px-8 py-4 bg-white/10 text-white text-sm font-bold border border-white/20 rounded-full hover:bg-white/20 transition-all flex items-center justify-center gap-2 mx-auto lg:mx-0"
               >
                 Check Today’s Live Exchange Rate
-                <span className="material-symbols-outlined text-sm">trending_up</span>
+                <span className="material-symbols-outlined text-sm text-white">
+                  trending_up
+                </span>
               </button>
             </div>
           </div>
@@ -86,10 +88,17 @@ const ForexSection: React.FC<ForexSectionProps> = ({ onNavigate }) => {
                   key={idx}
                   className="p-2 flex flex-col items-center text-center cursor-default"
                 >
-                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
-                    <span className="material-symbols-outlined text-3xl">{service.icon}</span>
+                  {/* ✅ Icon White */}
+                  <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center mb-5">
+                    <span className="material-symbols-outlined text-3xl text-white">
+                      {service.icon}
+                    </span>
                   </div>
-                  <h4 className="text-white font-bold text-base mb-1.5">{service.title}</h4>
+
+                  <h4 className="text-white font-bold text-base mb-1.5">
+                    {service.title}
+                  </h4>
+
                   <p className="text-blue-100/60 text-xs leading-snug">
                     {service.description}
                   </p>
