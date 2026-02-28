@@ -1,0 +1,136 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const CurrencyExchangePala: React.FC = () => {
+  return (
+    <section className="bg-white text-gray-800 py-16 px-6">
+      <div className="max-w-6xl mx-auto">
+
+        {/* 🔥 MAIN H1 */}
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+          Currency Exchange in Pala – Best Forex Rates in Kottayam
+        </h1>
+
+        {/* 🔥 INTRO PARAGRAPH */}
+        <p className="text-lg text-gray-600 mb-10 text-center max-w-4xl mx-auto">
+          Cherupushpam Agency is a trusted currency exchange in Pala, Kottayam,
+          offering competitive forex rates for buying and selling foreign
+          currency. We provide secure and fast forex exchange services,
+          international money transfer, student forex, travel cards, and
+          Western Union transfers for customers across Pala and nearby towns.
+        </p>
+
+        {/* 🔥 WHY CHOOSE US */}
+        <h2 className="text-3xl font-semibold mb-4">
+          Why Choose Cherupushpam Agency for Currency Exchange in Pala?
+        </h2>
+
+        <ul className="list-disc pl-6 text-gray-600 mb-10 space-y-2">
+          <li>Competitive forex rates in Pala with transparent pricing</li>
+          <li>Fast and secure foreign currency exchange</li>
+          <li>Western Union money transfer services</li>
+          <li>Student forex and tuition fee transfers</li>
+          <li>Travel cards and international remittance support</li>
+          <li>Serving Pala, Bharananganam, Ramapuram, Kuravilangad, Ettumanoor, Kottayam and Thodupuzha</li>
+        </ul>
+
+        {/* 🔥 SERVICES SECTION */}
+        <h2 className="text-3xl font-semibold mb-6">
+          Our Forex Exchange Services in Pala
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-8 text-gray-600 mb-12">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">
+              Foreign Currency Exchange
+            </h3>
+            <p>
+              Buy and sell major international currencies including USD, EUR,
+              GBP and more at competitive forex rates in Pala.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">
+              International Money Transfer
+            </h3>
+            <p>
+              Send and receive money worldwide with secure international money
+              transfer and Western Union services in Pala.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">
+              Student Forex Services
+            </h3>
+            <p>
+              Overseas education payments, tuition fee transfers and forex
+              solutions for students travelling abroad.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">
+              Travel Cards
+            </h3>
+            <p>
+              Convenient prepaid forex cards for safe international travel and
+              secure global transactions.
+            </p>
+          </div>
+        </div>
+
+        {/* 🔥 FAQ SECTION */}
+        <h2 className="text-3xl font-semibold mb-6">
+          Frequently Asked Questions – Currency Exchange in Pala
+        </h2>
+
+        <div className="space-y-6 text-gray-600 mb-12">
+          <div>
+            <h4 className="font-semibold">
+              What documents are required for currency exchange in Pala?
+            </h4>
+            <p>
+              Valid ID proof, travel documents and PAN card may be required
+              depending on the transaction type and amount.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold">
+              Do you offer the best forex rates in Pala?
+            </h4>
+            <p>
+              We strive to provide competitive forex rates in Pala with
+              transparent charges and reliable service.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold">
+              Can I send money abroad from Pala?
+            </h4>
+            <p>
+              Yes, we provide international money transfer and Western Union
+              services for secure global remittance.
+            </p>
+          </div>
+        </div>
+
+        {/* 🔥 CTA */}
+        <div className="text-center">
+          <Link
+            to="/contact"
+            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-all duration-300"
+          >
+            Contact Us for Best Forex Rates
+          </Link>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default CurrencyExchangePala;
