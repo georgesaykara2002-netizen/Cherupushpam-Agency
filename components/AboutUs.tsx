@@ -1,14 +1,17 @@
 import React from 'react';
 import picture from './img/tom.png';
 import jose from './img/jose.png';
+import { usePageSEO } from '../pages/hooks/usePageSEO';
 
 const AboutUs: React.FC = () => {
+  usePageSEO(
+    'About Us | Cherupushpam Agency | RBI Forex Dealer Since 1974 | Pala, Kerala',
+    'Learn about Cherupushpam Agency — an RBI authorized forex dealer and home electronics showroom in Pala, Kerala founded in 1974 by Jose Cherupushpam and led by Tom Cherupushpam.',
+    '/about'
+  );
+
   return (
-    <div
-      itemScope
-      itemType="https://schema.org/Organization"
-      className="min-h-screen bg-white text-gray-900 pt-32 pb-16"
-    >
+    <div className="min-h-screen bg-white text-gray-900 pt-32 pb-16">
       <div className="layout-container mx-auto px-4 md:px-8 xl:px-40">
 
         {/* Hero Section */}

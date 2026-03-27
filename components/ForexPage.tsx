@@ -1,5 +1,6 @@
 import React from 'react';
 import ForexCalculator from './ForexCalculator';
+import { usePageSEO } from '../pages/hooks/usePageSEO';
 
 const services = [
   {
@@ -35,6 +36,12 @@ const services = [
 ];
 
 const ForexPage: React.FC = () => {
+  usePageSEO(
+    'Forex Services in Pala | Currency Exchange & Western Union | Cherupushpam Agency',
+    'RBI authorized currency exchange in Pala offering USD, EUR, GBP exchange, Western Union money transfers, student forex and travel cards in Kottayam.',
+    '/forex'
+  );
+
   return (
     <div className="min-h-screen bg-white pt-32 pb-16">
       <div className="layout-container mx-auto px-4 md:px-8 xl:px-40">

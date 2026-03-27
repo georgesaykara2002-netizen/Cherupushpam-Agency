@@ -1,8 +1,15 @@
 import React, { useState, FormEvent } from 'react';
+import { usePageSEO } from '../pages/hooks/usePageSEO';
 
 const ContactUs: React.FC = () => {
   const WHATSAPP_NUMBER = "9778473009";
   const TOM_NUMBER = "9447113009";
+
+  usePageSEO(
+    'Contact Cherupushpam Agency | Forex & Electronics Showroom in Pala',
+    'Contact Cherupushpam Agency in Pala, Kerala. Visit our showroom opposite Civil Station, call +91 9447113009, or chat on WhatsApp for forex rates and appliance enquiries.',
+    '/contact'
+  );
 
   const [formData, setFormData] = useState({
     name: '',
@@ -217,7 +224,7 @@ ${message}
 
               <button
                 type="submit"
-                className="w-full bg-primary py-3 rounded-lg font-bold text-black hover:opacity-90 transition"
+                className="w-full bg-primary py-3 rounded-lg font-bold text-white hover:opacity-90 transition"
               >
                 Send via WhatsApp
               </button>
@@ -227,10 +234,10 @@ ${message}
           {/* Map */}
           <div className="w-full h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
             <iframe
-              src="https://maps.google.com/maps?q=Pala%2C%20Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Cherupushpam+Agency+Pala+Kerala&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full"
               loading="lazy"
-              title="Cherupushpam Agency"
+              title="Cherupushpam Agency Location — Forex & Electronics Showroom, Pala"
             />
           </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePageSEO } from '../pages/hooks/usePageSEO';
 import mixie from './img/mixie.png';
 import vaccumcleaner1 from './img/vaccumcleaner.png';
 import smarttelevision from './img/smarttelevisions.png';
@@ -78,6 +79,12 @@ const categories = [
 ];
 
 const Electronics: React.FC = () => {
+  usePageSEO(
+    'Home Appliances & Electronics Showroom in Pala | LG, Samsung, Sony | Cherupushpam Agency',
+    'Browse our full range of home appliances and electronics in Pala, Kottayam — smart TVs, refrigerators, washing machines, ACs and more from LG, Samsung, Sony & IFB.',
+    '/electronics'
+  );
+
   return (
     <div className="min-h-screen bg-white text-gray-900 pt-32 pb-16 font-display">
       <div className="layout-container mx-auto px-4 md:px-8 xl:px-40">
@@ -90,7 +97,7 @@ const Electronics: React.FC = () => {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-black mb-6 text-[#111814]">
-            Explore Our Categories
+            Home Appliances &amp; Electronics Showroom in Pala
           </h1>
 
           <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
