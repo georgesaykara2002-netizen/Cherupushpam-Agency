@@ -21,7 +21,7 @@ const AboutUs: React.FC = () => {
             Est. 1974
           </div>
 
-          <h1 itemProp="name" className="text-4xl md:text-5xl font-black text-[#111814] mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-[#111814] mb-6">
             About Cherupushpam Agency
           </h1>
 

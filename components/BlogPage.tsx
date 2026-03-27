@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { usePageSEO } from '../pages/hooks/usePageSEO';
 
 const blogPosts = [
   {
@@ -58,6 +59,23 @@ const blogPosts = [
 ];
 
 const BlogPage: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  usePageSEO(
+    'Blog | Electronics Tips, Forex News & Buying Guides | Cherupushpam Agency',
+    'Read the latest articles on home appliances, forex tips, buying guides and NRI remittance from Cherupushpam Agency — Pala, Kottayam, Kerala.',
+    '/blog'
+  );
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail('');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white pt-32 pb-16 text-gray-900">
       <div className="layout-container mx-auto px-4 md:px-8 xl:px-40">
@@ -173,15 +191,37 @@ const BlogPage: React.FC = () => {
             Subscribe to our newsletter for exclusive offers and the latest news from Pala's premier agency.
           </p>
 
-          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-3 rounded-xl bg-white text-black outline-none"
-            />
-            <button className="bg-primary text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition">
-              Subscribe
-            </button>
+          <form
+            name="newsletter"
+            method="POST"
+            data-netlify="true"
+            onSubmit={handleSubscribe}
+            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+          >
+            <input type="hidden" name="form-name" value="newsletter" />
+            {subscribed ? (
+              <p className="text-green-300 font-bold w-full text-center py-3">
+                ✓ Thank you! You're subscribed.
+              </p>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 px-6 py-3 rounded-xl bg-white text-black outline-none"
+                />
+                <button
+                  type="submit"
+                  className="bg-primary text-white font-bold px-8 py-3 rounded-xl hover:opacity-90 transition"
+                >
+                  Subscribe
+                </button>
+              </>
+            )}
           </form>
         </div>
 

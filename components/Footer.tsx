@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from './img/logofile.png';
 
 const Footer: React.FC = () => {
@@ -115,19 +116,19 @@ const Footer: React.FC = () => {
           </p>
 
           <div className="flex gap-6">
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="text-gray-500 hover:text-primary transition text-sm"
             >
               Privacy Policy
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="/terms"
               className="text-gray-500 hover:text-primary transition text-sm"
             >
               Terms of Service
-            </a>
+            </Link>
           </div>
 
         </div>

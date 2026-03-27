@@ -16,6 +16,8 @@ import ForexPage from '../components/ForexPage';
 import AboutUs from '../components/AboutUs';
 import BlogPage from '../components/BlogPage';
 import ForexExchangePala from '../components/ForexExchangePala';
+import PrivacyPolicy from '../components/PrivacyPolicy';
+import TermsOfService from '../components/TermsOfService';
 
 // Scroll to top on route change (Good for SEO + UX)
 const ScrollToTop = () => {
@@ -58,6 +60,8 @@ const App: React.FC = () => {
         <Route path="/forex" element={<ForexPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/forex-exchange-pala" element={<ForexExchangePala />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
       </Routes>
 
       <Footer />

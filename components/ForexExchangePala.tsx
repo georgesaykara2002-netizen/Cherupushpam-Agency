@@ -19,7 +19,7 @@ const ForexExchangePala = () => {
   }, []);
 
   return (
-    <section className="bg-white py-16 px-6 md:px-20">
+    <section className="bg-white pt-32 pb-16 px-6 md:px-20">
       
       {/* MAIN HEADING */}
       <div className="max-w-4xl mx-auto text-center mb-12">

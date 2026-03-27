@@ -69,6 +69,8 @@ const Header: React.FC = () => {
             </Link>
 
             <button
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
               className="lg:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-full transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
